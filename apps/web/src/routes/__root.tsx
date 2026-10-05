@@ -1,0 +1,206 @@
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import type { QueryClient } from "@tanstack/react-query";
+import {
+	createRootRouteWithContext,
+	HeadContent,
+	Link,
+	Outlet,
+	Scripts,
+	useRouterState,
+} from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { Toaster } from "@workspace/ui/components/toast";
+import appCss from "@workspace/ui/globals.css?url";
+import nprogress from "nprogress";
+import TanstackQueryProvider from "#/integrations/tanstack-query/root-provider";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Modal from "../components/Modal";
+import WelcomePopup from "../components/WelcomePopup";
+import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
+import fontScaleCss from "../styles/font-scale.css?url";
+import marqueeCss from "../styles/marquee.css?url";
+import rotatingWordCss from "../styles/rotating-word.css?url";
+import "nprogress/nprogress.css";
+import { Button } from "@workspace/ui/components/button";
+import { AlertCircle } from "lucide-react";
+import { useEffect } from "react";
+
+nprogress.configure({ showSpinner: false, minimum: 0.15 });
+
+interface MyRouterContext {
+	queryClient: QueryClient;
+}
+
+const SITE_URL = "https://gavikinaenergy.com";
+const SITE_TITLE = "Gavikina Energy — Power Your Own";
+const SITE_DESCRIPTION =
+	"Gavikina Energy — solar systems sized from a measured load, installed and commissioned by our own engineers, owned outright by you.";
+
+export const Route = createRootRouteWithContext<MyRouterContext>()({
+	head: () => ({
+		meta: [
+			{ charSet: "utf-8" },
+			{ name: "viewport", content: "width=device-width, initial-scale=1" },
+			{ title: SITE_TITLE },
+			{ name: "description", content: SITE_DESCRIPTION },
+			{ name: "theme-color", content: "#101328" },
+			{ property: "og:type", content: "website" },
+			{ property: "og:site_name", content: "Gavikina Energy" },
+			{ property: "og:title", content: SITE_TITLE },
+			{
+				property: "og:description",
+				content:
+					"Solar systems sized to what you actually run — installed, commissioned, and owned outright by you.",
+			},
+			{ property: "og:image", content: `${SITE_URL}/og-image.png` },
+			{ property: "og:image:width", content: "1200" },
+			{ property: "og:image:height", content: "630" },
+			{ property: "og:url", content: SITE_URL },
+			{ name: "twitter:card", content: "summary_large_image" },
+			{ name: "twitter:title", content: SITE_TITLE },
+			{
+				name: "twitter:description",
+				content:
+					"Solar systems sized to what you actually run — installed, commissioned, and owned outright by you.",
+			},
+			{ name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+		],
+		links: [
+			{ rel: "stylesheet", href: appCss },
+			{ rel: "stylesheet", href: fontScaleCss },
+			{ rel: "stylesheet", href: marqueeCss },
+			{ rel: "stylesheet", href: rotatingWordCss },
+			{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+			{
+				rel: "icon",
+				type: "image/png",
+				sizes: "32x32",
+				href: "/favicon-32.png",
+			},
+			{
+				rel: "apple-touch-icon",
+				sizes: "180x180",
+				href: "/apple-touch-icon.png",
+			},
+			{ rel: "manifest", href: "/site.webmanifest" },
+			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+			{
+				rel: "preconnect",
+				href: "https://fonts.gstatic.com",
+				crossOrigin: "anonymous",
+			},
+		],
+	}),
+	component: RootLayout,
+	shellComponent: RootDocument,
+	notFoundComponent: NotFoundPage,
+	errorComponent: GlobalErrorPage,
+});
+
+function RootDocument({ children }: { children: React.ReactNode }) {
+	return (
+		<html lang="en">
+			<head>
+				<HeadContent />
+			</head>
+			<body>
+				{children}
+				<TanStackDevtools
+					config={{
+						position: "bottom-right",
+					}}
+					plugins={[
+						{
+							name: "Tanstack Router",
+							render: <TanStackRouterDevtoolsPanel />,
+						},
+						TanStackQueryDevtools,
+					]}
+				/>
+				<Scripts />
+			</body>
+		</html>
+	);
+}
+
+export function RootLayout() {
+	const isLoading = useRouterState({ select: (s) => s.isLoading });
+
+	useEffect(() => {
+		if (isLoading) {
+			nprogress.start();
+		} else {
+			nprogress.done();
+		}
+	}, [isLoading]);
+
+	const { queryClient } = Route.useRouteContext();
+	return (
+		<TanstackQueryProvider queryClient={queryClient}>
+			<div className="min-h-screen text-navy">
+				<Header />
+				<Outlet />
+				<Footer />
+				<Toaster />
+				<Modal />
+				<WelcomePopup />
+			</div>
+		</TanstackQueryProvider>
+	);
+}
+
+function NotFoundPage() {
+	return (
+		<div className="flex min-h-[65vh] flex-col items-center justify-center px-4 text-center">
+			<h1 className="text-7xl font-bold tracking-tight text-navy sm:text-9xl">
+				404
+			</h1>
+			<h2 className="mt-4 text-xl font-semibold tracking-tight text-navy sm:text-2xl">
+				Page not found
+			</h2>
+			<p className="mt-2 max-w-md text-sm leading-relaxed text-navy/70">
+				The page you are looking for doesn't exist or has been moved.
+			</p>
+			<Button
+				size="lg"
+				className="mt-8"
+				nativeButton={false}
+				render={<Link to="/" />}
+			>
+				Go back home
+			</Button>
+		</div>
+	);
+}
+
+// biome-ignore lint/suspicious/noExplicitAny: <any err>
+function GlobalErrorPage({ error, reset }: { error: any; reset: () => void }) {
+	return (
+		<div className="flex min-h-[65vh] flex-col items-center justify-center px-4 text-center">
+			<span className="flex size-16 items-center justify-center rounded-2xl bg-red-50 text-red-500">
+				<AlertCircle className="size-8" />
+			</span>
+			<h1 className="mt-6 text-2xl font-semibold tracking-tight text-navy sm:text-3xl">
+				Something went wrong
+			</h1>
+			<p className="mt-2 max-w-md text-sm leading-relaxed text-navy/70">
+				{error?.message ||
+					"An unexpected error occurred while loading this page."}
+			</p>
+			<div className="mt-8 flex items-center gap-4">
+				<Button onClick={reset} size="lg">
+					Try again
+				</Button>
+				<Button
+					variant="outline"
+					size="lg"
+					nativeButton={false}
+					render={<Link to="/" />}
+				>
+					Go home
+				</Button>
+			</div>
+		</div>
+	);
+}

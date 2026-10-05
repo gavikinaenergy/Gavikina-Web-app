@@ -1,0 +1,32 @@
+{
+  "name": "gavikina",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "turbo": "^2.9.18",
+    "typescript": "^6"
+  },
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "onlyBuiltDependencies": [
+    "esbuild",
+    "lightningcss"
+  ],
+  "overrides": {
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "recharts": "3.10.1",
+    "react-dropzone": "20.1.1"
+  }
+}
