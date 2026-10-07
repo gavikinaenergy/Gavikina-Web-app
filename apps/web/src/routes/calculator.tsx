@@ -1,8 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createSoftwareApplicationSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 import SolarCalculator from "../modules/calculator/components/SolarCalculator";
 import { openAssess } from "../store/modal";
 
 export const Route = createFileRoute("/calculator")({
+	head: () =>
+		createSeoMeta({
+			title: "Solar Load Calculator | Gavikina Energy",
+			description:
+				"Calculate the solar system size your home or office requires. Select your appliances to estimate daily load and find the right capacity tier.",
+			path: "/calculator",
+			jsonLd: createSoftwareApplicationSchema({
+				name: "Solar Load Calculator",
+				description:
+					"Interactive tool to calculate household or commercial electrical load and determine required solar system capacity.",
+				path: "/calculator",
+				applicationCategory: "UtilitiesApplication",
+			}),
+		}),
 	component: CalculatorPage,
 });
 

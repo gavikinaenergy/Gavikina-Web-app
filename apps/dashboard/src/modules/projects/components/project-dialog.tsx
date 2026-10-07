@@ -28,7 +28,7 @@ import { useForm } from "react-hook-form";
 import { catalogueTiersQueryOptions } from "@/modules/catalogue/query-options";
 import { useFileUpload } from "@/modules/upload/hooks/use-file-upload";
 import { closeDialog } from "@/store/dialog-store";
-import { createProject, updateProject } from "../api";
+import { createProject, updateProject, type ProjectPayload } from "../api";
 import {
 	type ProjectWithPhotos,
 	projectDetailQueryOptions,
@@ -130,7 +130,7 @@ export function ProjectDialog({ projectId, ...props }: ProjectDialogProps) {
 	});
 
 	const updateMutation = useMutation({
-		mutationFn: (data: { id: string; payload: unknown }) =>
+		mutationFn: (data: { id: string; payload: Partial<ProjectPayload> }) =>
 			updateProject(data.id, data.payload),
 		onSuccess: () => {
 			toast.add({

@@ -1,7 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createSoftwareApplicationSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 import AssessmentWizard from "#/modules/assessment/components/assessment-wizard";
 
 export const Route = createFileRoute("/assessment")({
+	head: () =>
+		createSeoMeta({
+			title: "Free Energy Assessment | Gavikina Energy",
+			description:
+				"Complete a ten-minute energy assessment for your property. Review system recommendations and fuel cost comparisons before booking an inspection.",
+			path: "/assessment",
+			jsonLd: createSoftwareApplicationSchema({
+				name: "Solar Energy Assessment Wizard",
+				description:
+					"Online electrical audit wizard providing system recommendations and generator fuel cost comparisons for Nigerian properties.",
+				path: "/assessment",
+				applicationCategory: "BusinessApplication",
+			}),
+		}),
 	component: AssessmentPage,
 });
 

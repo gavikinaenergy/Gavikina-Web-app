@@ -10,8 +10,25 @@ import { Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitInvestorRequest } from "#/modules/enquiries/api";
+import { createWebPageSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 
-export const Route = createFileRoute("/investors")({ component: Investors });
+export const Route = createFileRoute("/investors")({
+	head: () =>
+		createSeoMeta({
+			title: "Investor Information | Gavikina Energy",
+			description:
+				"Read our investment brief on solar energy infrastructure in Nigeria. Learn about our standardised installation model and request the investor pack.",
+			path: "/investors",
+			jsonLd: createWebPageSchema({
+				title: "Investor Information | Gavikina Energy",
+				description:
+					"Read our investment brief on solar energy infrastructure in Nigeria. Learn about our standardised installation model and request the investor pack.",
+				path: "/investors",
+			}),
+		}),
+	component: Investors,
+});
 
 const INVESTOR_STATS = [
 	{

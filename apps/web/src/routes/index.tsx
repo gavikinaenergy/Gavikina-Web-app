@@ -38,10 +38,25 @@ import InstallationsMarquee from "../components/InstallationsMarquee"
 import RotatingEnding from "../components/RotatingEnding"
 import Reveal from "../components/Reveal"
 import { CASE_STUDY_PHOTO, HERO_SLOTS } from "../lib/content"
+import { createWebPageSchema } from "../lib/schema"
+import { createSeoMeta } from "../lib/seo"
 import SolarCalculator from "../modules/calculator/components/SolarCalculator"
 import { openAssess, openCalc } from "../store/modal"
 
 export const Route = createFileRoute("/")({
+  head: () =>
+    createSeoMeta({
+      title: "Solar Power Systems in Nigeria | Gavikina Energy",
+      description:
+        "Solar power systems sized to your actual appliance load. We supply, install, and commission complete systems with lithium batteries across Nigeria.",
+      path: "/",
+      jsonLd: createWebPageSchema({
+        title: "Solar Power Systems in Nigeria | Gavikina Energy",
+        description:
+          "Solar power systems sized to your actual appliance load. We supply, install, and commission complete systems with lithium batteries across Nigeria.",
+        path: "/",
+      }),
+    }),
   component: Home,
   loader: async ({ context }) => {
     await Promise.all([

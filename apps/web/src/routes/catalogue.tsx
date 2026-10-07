@@ -7,13 +7,23 @@ import { Skeleton } from "@workspace/ui/components/skeleton";
 import { Check } from "lucide-react";
 import { AsyncBoundary } from "@/components/async-boundary";
 import { catalogueTiersQueryOptions } from "@/modules/catalogue/query-options";
+import { createProductCatalogueSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 import { openAssess, openCalc } from "../store/modal";
 
 export const Route = createFileRoute("/catalogue")({
-	component: CataloguePage,
 	loader: async ({ context }) => {
-		await context.queryClient.query(catalogueTiersQueryOptions());
+		return await context.queryClient.query(catalogueTiersQueryOptions());
 	},
+	head: ({ loaderData }) =>
+		createSeoMeta({
+			title: "Solar System Tiers and Pricing | Gavikina Energy",
+			description:
+				"Compare solar system tiers from 1.5kVA to 10kVA. Each complete setup includes monocrystalline panels, a hybrid inverter, and LiFePO4 batteries.",
+			path: "/catalogue",
+			jsonLd: createProductCatalogueSchema(loaderData),
+		}),
+	component: CataloguePage,
 });
 
 const COMPONENTS = [
@@ -178,7 +188,7 @@ function CatalogueTiersList() {
 											key={`${trimmedPower}-${
 												// biome-ignore lint/suspicious/noArrayIndexKey: <...>
 												idx
-											}`}
+												}`}
 											variant="outline"
 											className="bg-cream/60 text-[11px] text-navy/80 border-navy/10"
 										>

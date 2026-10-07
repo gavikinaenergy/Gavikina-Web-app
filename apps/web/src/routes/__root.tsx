@@ -26,72 +26,59 @@ import { Button } from "@workspace/ui/components/button";
 import { AlertCircle } from "lucide-react";
 import { useEffect } from "react";
 
+import { siteConfig } from "../config/site";
+import { createRootSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
+
 nprogress.configure({ showSpinner: false, minimum: 0.15 });
 
 interface MyRouterContext {
 	queryClient: QueryClient;
 }
 
-const SITE_URL = "https://gavikinaenergy.com";
-const SITE_TITLE = "Gavikina Energy — Power Your Own";
-const SITE_DESCRIPTION =
-	"Gavikina Energy — solar systems sized from a measured load, installed and commissioned by our own engineers, owned outright by you.";
-
 export const Route = createRootRouteWithContext<MyRouterContext>()({
-	head: () => ({
-		meta: [
-			{ charSet: "utf-8" },
-			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ title: SITE_TITLE },
-			{ name: "description", content: SITE_DESCRIPTION },
-			{ name: "theme-color", content: "#101328" },
-			{ property: "og:type", content: "website" },
-			{ property: "og:site_name", content: "Gavikina Energy" },
-			{ property: "og:title", content: SITE_TITLE },
-			{
-				property: "og:description",
-				content:
-					"Solar systems sized to what you actually run — installed, commissioned, and owned outright by you.",
-			},
-			{ property: "og:image", content: `${SITE_URL}/og-image.png` },
-			{ property: "og:image:width", content: "1200" },
-			{ property: "og:image:height", content: "630" },
-			{ property: "og:url", content: SITE_URL },
-			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:title", content: SITE_TITLE },
-			{
-				name: "twitter:description",
-				content:
-					"Solar systems sized to what you actually run — installed, commissioned, and owned outright by you.",
-			},
-			{ name: "twitter:image", content: `${SITE_URL}/og-image.png` },
-		],
-		links: [
-			{ rel: "stylesheet", href: appCss },
-			{ rel: "stylesheet", href: fontScaleCss },
-			{ rel: "stylesheet", href: marqueeCss },
-			{ rel: "stylesheet", href: rotatingWordCss },
-			{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-			{
-				rel: "icon",
-				type: "image/png",
-				sizes: "32x32",
-				href: "/favicon-32.png",
-			},
-			{
-				rel: "apple-touch-icon",
-				sizes: "180x180",
-				href: "/apple-touch-icon.png",
-			},
-			{ rel: "manifest", href: "/site.webmanifest" },
-			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous",
-			},
-		],
-	}),
+	head: () => {
+		const rootSeo = createSeoMeta({
+			title: siteConfig.defaultTitle,
+			description: siteConfig.defaultDescription,
+			path: "/",
+			jsonLd: createRootSchema(),
+		});
+
+		return {
+			meta: [
+				{ charSet: "utf-8" },
+				{ name: "viewport", content: "width=device-width, initial-scale=1" },
+				...rootSeo.meta,
+			],
+			links: [
+				{ rel: "stylesheet", href: appCss },
+				{ rel: "stylesheet", href: fontScaleCss },
+				{ rel: "stylesheet", href: marqueeCss },
+				{ rel: "stylesheet", href: rotatingWordCss },
+				{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+				{
+					rel: "icon",
+					type: "image/png",
+					sizes: "32x32",
+					href: "/favicon-32.png",
+				},
+				{
+					rel: "apple-touch-icon",
+					sizes: "180x180",
+					href: "/apple-touch-icon.png",
+				},
+				{ rel: "manifest", href: "/site.webmanifest" },
+				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+				{
+					rel: "preconnect",
+					href: "https://fonts.gstatic.com",
+					crossOrigin: "anonymous",
+				},
+			],
+			scripts: rootSeo.scripts,
+		};
+	},
 	component: RootLayout,
 	shellComponent: RootDocument,
 	notFoundComponent: NotFoundPage,

@@ -1,8 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ImageSlot from "../components/ImageSlot";
 import { ABOUT_PHOTO } from "../lib/content";
+import { createAboutPageSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 
-export const Route = createFileRoute("/about")({ component: About });
+export const Route = createFileRoute("/about")({
+	head: () =>
+		createSeoMeta({
+			title: "About Our Solar Company | Gavikina Energy",
+			description:
+				"Gavikina Nigeria Limited engineers complete solar and lithium battery installations. We size systems accurately so clients own their energy assets.",
+			path: "/about",
+			jsonLd: createAboutPageSchema(),
+		}),
+	component: About,
+});
 
 const PRINCIPLES = [
 	{

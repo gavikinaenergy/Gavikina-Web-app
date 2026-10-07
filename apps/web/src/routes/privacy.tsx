@@ -1,6 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createWebPageSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 
-export const Route = createFileRoute("/privacy")({ component: Privacy });
+export const Route = createFileRoute("/privacy")({
+	head: () =>
+		createSeoMeta({
+			title: "Privacy Policy | Gavikina Energy",
+			description:
+				"Read the Gavikina Energy privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.",
+			path: "/privacy",
+			jsonLd: createWebPageSchema({
+				title: "Privacy Policy | Gavikina Energy",
+				description:
+					"Read the Gavikina Energy privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.",
+				path: "/privacy",
+			}),
+		}),
+	component: Privacy,
+});
 
 const SECTIONS = [
 	{

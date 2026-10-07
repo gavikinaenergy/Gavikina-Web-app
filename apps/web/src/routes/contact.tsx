@@ -10,7 +10,20 @@ import { Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitContact } from "#/modules/enquiries/api";
-export const Route = createFileRoute("/contact")({ component: Contact });
+import { createContactPageSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
+
+export const Route = createFileRoute("/contact")({
+	head: () =>
+		createSeoMeta({
+			title: "Contact Our Solar Team | Gavikina Energy",
+			description:
+				"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Victoria Island, Lagos, to discuss your power requirements.",
+			path: "/contact",
+			jsonLd: createContactPageSchema(),
+		}),
+	component: Contact,
+});
 
 const CONTACT_METHODS = [
 	{

@@ -1,6 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createWebPageSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 
-export const Route = createFileRoute("/terms")({ component: Terms });
+export const Route = createFileRoute("/terms")({
+	head: () =>
+		createSeoMeta({
+			title: "Terms and Conditions | Gavikina Energy",
+			description:
+				"Review terms and conditions for Gavikina Energy services, including quotation acceptance, equipment ownership, warranties, and installation agreements.",
+			path: "/terms",
+			jsonLd: createWebPageSchema({
+				title: "Terms and Conditions | Gavikina Energy",
+				description:
+					"Review terms and conditions for Gavikina Energy services, including quotation acceptance, equipment ownership, warranties, and installation agreements.",
+				path: "/terms",
+			}),
+		}),
+	component: Terms,
+});
 
 const SECTIONS = [
 	{

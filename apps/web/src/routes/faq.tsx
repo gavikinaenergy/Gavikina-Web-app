@@ -6,8 +6,20 @@ import {
 	AccordionTrigger,
 } from "@workspace/ui/components/accordion";
 import { FAQS } from "../lib/content";
+import { createFaqSchema } from "../lib/schema";
+import { createSeoMeta } from "../lib/seo";
 
-export const Route = createFileRoute("/faq")({ component: Faq });
+export const Route = createFileRoute("/faq")({
+	head: () =>
+		createSeoMeta({
+			title: "Solar FAQs | Gavikina Energy",
+			description:
+				"Find clear answers to common questions about solar panel output, generator integration, lithium battery life, installation timelines, and pricing.",
+			path: "/faq",
+			jsonLd: createFaqSchema(FAQS),
+		}),
+	component: Faq,
+});
 
 function Faq() {
 	return (
