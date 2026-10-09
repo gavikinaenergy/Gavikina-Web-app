@@ -7,7 +7,7 @@ export const siteConfig = {
 	defaultDescription:
 		"Solar power systems sized from measured load audits for homes and businesses in Nigeria. Installed with lithium batteries and owned outright.",
 	themeColor: "#101328",
-	defaultOgImage: "/og-image.png",
+	defaultOgImage: "/og-image.webp",
 	social: {
 		twitter: "@gavikinaenergy",
 		twitterUrl: "https://twitter.com/gavikinaenergy",
