@@ -96,7 +96,7 @@ function Terms() {
 						<br />
 						Email: hello@gavikinaenergy.com
 						<br />
-						Phone: 0800 428 4546
+						Phone: +234 913 222 2384
 					</p>
 				</div>
 			</div>

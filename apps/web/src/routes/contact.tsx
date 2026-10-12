@@ -29,13 +29,13 @@ const CONTACT_METHODS = [
 	{
 		icon: Phone,
 		label: "Phone",
-		value: "0800 428 4546",
+		value: "+234 913 222 2384",
 		note: "Mon–Sat, 8am to 6pm",
 	},
 	{
 		icon: MessageCircle,
 		label: "WhatsApp",
-		value: "+234 803 000 0000",
+		value: "+234 913 222 2384",
 		note: "Fastest for photos of your board or roof",
 	},
 	{

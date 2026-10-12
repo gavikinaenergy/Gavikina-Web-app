@@ -14,9 +14,9 @@ export const siteConfig = {
 		linkedinUrl: "https://www.linkedin.com/company/gavikina-energy",
 	},
 	contact: {
-		phone: "0800 428 4546",
-		phoneIntl: "+2348004284546",
-		whatsapp: "+234 803 000 0000",
+		phone: "+234 913 222 2384",
+		phoneIntl: "+2349132222384",
+		whatsapp: "+234 913 222 2384",
 		email: "hello@gavikinaenergy.com",
 		address: {
 			streetAddress: "121 Lawanson Rd, beside Adidde Supermarket",
