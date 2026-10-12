@@ -256,7 +256,7 @@ export function createContactPageSchema() {
 		"@type": "ContactPage",
 		name: "Contact Our Solar Team | Gavikina Energy",
 		description:
-			"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Victoria Island, Lagos, to discuss your power requirements.",
+			"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Surulere, Lagos, to discuss your power requirements.",
 		url: absoluteUrl("/contact"),
 		mainEntity: {
 			"@id": `${siteConfig.url}/#organization`,

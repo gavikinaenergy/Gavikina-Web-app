@@ -96,7 +96,7 @@ function Privacy() {
 					<p className="mt-2 text-sm leading-loose text-navy/70 sm:text-[15.5px]">
 						Gavikina Nigeria Limited (trading as Gavikina Energy)
 						<br />
-						14 Adeola Odeku Street, Victoria Island, Lagos, Nigeria
+						121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254, Nigeria
 						<br />
 						Email: hello@gavikinaenergy.com
 						<br />

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/contact")({
 		createSeoMeta({
 			title: "Contact Our Solar Team | Gavikina Energy",
 			description:
-				"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Victoria Island, Lagos, to discuss your power requirements.",
+				"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Surulere, Lagos, to discuss your power requirements.",
 			path: "/contact",
 			jsonLd: createContactPageSchema(),
 		}),
@@ -47,7 +47,7 @@ const CONTACT_METHODS = [
 	{
 		icon: MapPin,
 		label: "Office",
-		value: "14 Adeola Odeku Street, Victoria Island, Lagos",
+		value: "121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254",
 		note: "Visits by appointment",
 	},
 ];
@@ -121,18 +121,18 @@ function Contact() {
 
 					<div className="overflow-hidden rounded-2xl border border-navy/10 bg-cream">
 						<iframe
-							title="Map of 14 Adeola Odeku Street, Victoria Island, Lagos"
-							src="https://www.openstreetmap.org/export/embed.html?bbox=3.4141%2C6.4231%2C3.4291%2C6.4331&layer=mapnik&marker=6.4281%2C3.4216"
+							title="Map of 121 Lawanson Rd, Surulere, Lagos"
+							src="https://www.openstreetmap.org/export/embed.html?bbox=3.3378%2C6.5068%2C3.3528%2C6.5168&layer=mapnik&marker=6.5118%2C3.3453"
 							loading="lazy"
 							className="block h-64 w-full border-0"
 						/>
 						<div className="flex flex-wrap items-center justify-between gap-4 bg-white p-5">
 							<div>
 								<div className="text-sm font-semibold tracking-tight text-navy">
-									14 Adeola Odeku Street
+									121 Lawanson Rd, beside Adidde Supermarket
 								</div>
 								<div className="mt-0.5 text-xs text-navy/60">
-									Victoria Island, Lagos
+									Surulere, Lagos 100254
 								</div>
 							</div>
 							<Button
@@ -141,7 +141,7 @@ function Contact() {
 								nativeButton={false}
 								render={
 									<a
-										href="https://www.openstreetmap.org/?mlat=6.4281&mlon=3.4216#map=17/6.4281/3.4216"
+										href="https://www.google.com/maps/search/?api=1&query=121+Lawanson+Rd%2C+Surulere%2C+Lagos+100254"
 										target="_blank"
 										rel="noopener noreferrer"
 									/>

@@ -19,10 +19,10 @@ export const siteConfig = {
 		whatsapp: "+234 803 000 0000",
 		email: "hello@gavikinaenergy.com",
 		address: {
-			streetAddress: "14 Adeola Odeku Street",
-			addressLocality: "Victoria Island",
+			streetAddress: "121 Lawanson Rd, beside Adidde Supermarket",
+			addressLocality: "Surulere",
 			addressRegion: "Lagos",
-			postalCode: "101241",
+			postalCode: "100254",
 			addressCountry: "NG",
 		},
 	},
