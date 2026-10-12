@@ -92,7 +92,7 @@ const VALUE_PROPS: {
 ]
 
 const HERO_FACTS = [
-  { value: "1.5–10kVA", label: "Five system tiers, sized from your real load" },
+  { value: "1.5–10kVA", label: "System tiers sized from your real load" },
   { value: "Free", label: "Online energy assessment before any quote" },
   {
     value: "One price",
@@ -360,7 +360,7 @@ function Home() {
               System tiers
             </span>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-navy sm:text-3xl lg:text-4xl">
-              Five sizes. One honest price range each.
+              A size for every load. One honest price range each.
             </h2>
           </div>
           <Button
