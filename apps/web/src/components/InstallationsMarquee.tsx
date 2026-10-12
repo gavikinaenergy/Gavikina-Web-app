@@ -37,7 +37,7 @@ const LOOP = [...PHOTOS, ...PHOTOS];
 export default function InstallationsMarquee() {
 	return (
 		<div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-			<div className="animate-gv-marquee flex w-max [animation-direction:reverse] hover:[animation-play-state:paused]">
+			<div className="animate-gv-marquee flex w-max hover:[animation-play-state:paused]">
 				{LOOP.map((photo, i) => (
 					<div
 						key={`${photo.src}-${i}`}
