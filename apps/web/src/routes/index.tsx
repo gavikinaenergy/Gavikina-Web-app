@@ -35,6 +35,7 @@ import { projectsQueryOptions } from "#/modules/projects/query-options"
 import { AsyncBoundary } from "../components/async-boundary"
 import ImageSlot from "../components/ImageSlot"
 import InstallationsMarquee from "../components/InstallationsMarquee"
+import PartnersSlider from "../components/PartnersSlider"
 import RotatingEnding from "../components/RotatingEnding"
 import Reveal from "../components/Reveal"
 import { CASE_STUDY_PHOTO, HERO_SLOTS } from "../lib/content"
@@ -236,6 +237,19 @@ function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="overflow-hidden border-b border-navy/10 py-10 sm:py-12">
+        <div className="mb-6 text-center sm:mb-8">
+          <span className="text-xs font-semibold tracking-widest text-green uppercase">
+            Our partners
+          </span>
+          <h2 className="mt-2 text-xl font-semibold tracking-tight text-navy sm:text-2xl">
+            The brands behind every system we install
+          </h2>
+        </div>
+        <PartnersSlider />
       </section>
 
       {/* INSTALLATIONS COUNT */}
