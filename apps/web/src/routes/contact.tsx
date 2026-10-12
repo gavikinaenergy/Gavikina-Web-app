@@ -41,7 +41,7 @@ const CONTACT_METHODS = [
 	{
 		icon: Mail,
 		label: "Email",
-		value: "hello@gavikinaenergy.com",
+		value: "info@gavikinaenergy.com",
 		note: "Replied the same working day",
 	},
 	{

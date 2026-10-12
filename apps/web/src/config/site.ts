@@ -17,7 +17,7 @@ export const siteConfig = {
 		phone: "+234 913 222 2384",
 		phoneIntl: "+2349132222384",
 		whatsapp: "+234 913 222 2384",
-		email: "hello@gavikinaenergy.com",
+		email: "info@gavikinaenergy.com",
 		address: {
 			streetAddress: "121 Lawanson Rd, beside Adidde Supermarket",
 			addressLocality: "Surulere",

@@ -98,7 +98,7 @@ function Privacy() {
 						<br />
 						121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254, Nigeria
 						<br />
-						Email: hello@gavikinaenergy.com
+						Email: info@gavikinaenergy.com
 						<br />
 						Phone: +234 913 222 2384
 					</p>
