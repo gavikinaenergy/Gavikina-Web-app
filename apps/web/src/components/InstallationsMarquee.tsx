@@ -16,10 +16,6 @@ const PHOTOS = [
 		alt: "Wall-mounted inverter above a lithium battery",
 	},
 	{
-		src: "/hero/gavikina-engineers-install.jpg",
-		alt: "Two Gavikina Energy engineers installing an energy storage system",
-	},
-	{
 		src: "/installations/roof-array-3.jpg",
 		alt: "Row of solar panels on a brown metal roof",
 	},
@@ -41,7 +37,7 @@ const LOOP = [...PHOTOS, ...PHOTOS];
 export default function InstallationsMarquee() {
 	return (
 		<div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-			<div className="animate-gv-marquee flex w-max hover:[animation-play-state:paused]">
+			<div className="animate-gv-marquee flex w-max [animation-direction:reverse] hover:[animation-play-state:paused]">
 				{LOOP.map((photo, i) => (
 					<div
 						key={`${photo.src}-${i}`}
