@@ -152,10 +152,9 @@ export const CASE_STUDY_PHOTO: Photo = {
 	creditHref: "https://unsplash.com/@markusspiske",
 };
 
-export const ABOUT_PHOTO: Photo = {
-	src: U("photo-1660330589257-813305a4a383"),
-	credit: "Photo by Raze Solar on Unsplash",
-	creditHref: "https://unsplash.com/@razesolar",
+export const ABOUT_PHOTO = {
+	src: "/installations/distribution-board.jpg",
+	alt: "Gavikina Energy engineer in a branded hi-vis vest working on a distribution board",
 };
 
 export const FAQS = [

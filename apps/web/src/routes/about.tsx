@@ -85,8 +85,7 @@ function About() {
 					<ImageSlot
 						src={ABOUT_PHOTO.src}
 						placeholder="Team or install photo"
-						credit={ABOUT_PHOTO.credit}
-						creditHref={ABOUT_PHOTO.creditHref}
+						alt={ABOUT_PHOTO.alt}
 					/>
 				</div>
 			</div>
