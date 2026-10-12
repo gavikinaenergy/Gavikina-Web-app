@@ -224,7 +224,7 @@ function Home() {
       </section>
 
       {/* PARTNERS */}
-      <section className="overflow-hidden border-b border-navy/10 py-10 sm:py-12">
+      <section className="overflow-hidden bg-cream py-10 sm:py-12">
         <div className="mb-6 text-center sm:mb-8">
           <span className="text-xs font-semibold tracking-widest text-green uppercase">
             Our partners
