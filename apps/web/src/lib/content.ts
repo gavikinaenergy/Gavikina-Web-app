@@ -105,36 +105,10 @@ export interface Photo {
 	creditHref: string;
 }
 
-export const HERO_SLOTS: (Photo & { id: string; placeholder: string })[] = [
-	{
-		id: "gv-hero-1",
-		placeholder: "Drop step 1: crew setting out the mounting rails",
-		src: U("flagged/photo-1566838616631-f2618f74a6a2"),
-		credit: "Photo by Vivint Solar on Unsplash",
-		creditHref: "https://unsplash.com/@vivintsolar",
-	},
-	{
-		id: "gv-hero-2",
-		placeholder: "Drop step 2: lifting and placing the panels",
-		src: U("photo-1617269778723-73a40cf299bd"),
-		credit: "Photo by Jeroen van de Water on Unsplash",
-		creditHref: "https://unsplash.com/@joenevdw",
-	},
-	{
-		id: "gv-hero-3",
-		placeholder: "Drop step 3: wiring the array and inverter",
-		src: U("photo-1707247111552-aaf74241058b"),
-		credit: "Photo by Chirayu Trivedi on Unsplash",
-		creditHref: "https://unsplash.com/@rc820",
-	},
-	{
-		id: "gv-hero-4",
-		placeholder: "Drop step 4: finished system, commissioned",
-		src: U("photo-1745187946672-2c1d8cf26a2b"),
-		credit: "Photo by Rafael Moreno on Unsplash",
-		creditHref: "https://unsplash.com/@rafamrn",
-	},
-];
+export const HERO_PHOTO = {
+	src: "/hero/gavikina-engineers-install.jpg",
+	alt: "Two Gavikina Energy engineers in hard hats and hi-vis vests installing an inverter and battery system",
+};
 
 // Keyed by the shared Project.id (from @gavikina/engine) — the admin
 // dashboard only tracks a photo COUNT (no upload pipeline yet), so the

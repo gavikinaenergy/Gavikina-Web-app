@@ -33,12 +33,11 @@ import {
 import ProjectCard from "#/modules/projects/components/project-card"
 import { projectsQueryOptions } from "#/modules/projects/query-options"
 import { AsyncBoundary } from "../components/async-boundary"
-import ImageSlot from "../components/ImageSlot"
 import InstallationsMarquee from "../components/InstallationsMarquee"
 import PartnersSlider from "../components/PartnersSlider"
 import RotatingEnding from "../components/RotatingEnding"
 import Reveal from "../components/Reveal"
-import { CASE_STUDY_PHOTO, HERO_SLOTS } from "../lib/content"
+import { CASE_STUDY_PHOTO, HERO_PHOTO } from "../lib/content"
 import { createWebPageSchema } from "../lib/schema"
 import { createSeoMeta } from "../lib/seo"
 import SolarCalculator from "../modules/calculator/components/SolarCalculator"
@@ -143,14 +142,6 @@ const STEPS_SHORT: {
   },
 ]
 
-const KEN_ANIM = [
-  "animate-[gvKenA_32s_ease-in-out_infinite]",
-  "animate-[gvKenB_32s_ease-in-out_infinite]",
-  "animate-[gvKenA_32s_ease-in-out_infinite]",
-  "animate-[gvKenB_32s_ease-in-out_infinite]",
-]
-const KEN_DELAY = ["0s", "-24s", "-16s", "-8s"]
-
 function Home() {
   return (
     <div className="flex flex-col">
@@ -213,18 +204,11 @@ function Home() {
 
           <div className="relative">
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl border border-white/10">
-              {HERO_SLOTS.map((slot, i) => (
-                <div
-                  key={slot.id}
-                  className={cn(
-                    "absolute inset-0 will-change-[transform,opacity]",
-                    KEN_ANIM[i]
-                  )}
-                  style={{ animationDelay: KEN_DELAY[i] }}
-                >
-                  <ImageSlot {...slot} />
-                </div>
-              ))}
+              <img
+                src={HERO_PHOTO.src}
+                alt={HERO_PHOTO.alt}
+                className="block h-full w-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-6 -left-6 z-10 max-w-64 rounded-2xl bg-white p-5 text-navy shadow-2xl">
               <span className="text-[11px] font-semibold tracking-widest text-navy/20 uppercase">
