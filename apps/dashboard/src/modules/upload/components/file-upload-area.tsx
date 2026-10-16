@@ -1,4 +1,5 @@
 import { Button } from "@workspace/ui/components/button";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { cn } from "@workspace/ui/lib/utils";
 import { FileText, UploadCloud, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
@@ -107,9 +108,10 @@ export function FileUploadArea({
 							{isUploading ? (
 								<span className="text-xs font-bold z-10">{progress}%</span>
 							) : preview ? (
-								<img
+								<ImageWithSkeleton
 									src={preview}
 									alt="Preview"
+									skeletonClassName="bg-navy/10"
 									className="h-full w-full object-cover"
 								/>
 							) : (

@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Button } from "@workspace/ui/components/button";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { Input } from "@workspace/ui/components/input";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { cn } from "@workspace/ui/lib/utils";
@@ -226,13 +227,15 @@ function FeaturedCaseStudy() {
 		project.photos && project.photos.length > 0 ? project.photos[0] : undefined;
 
 	return (
-		<section className="mt-8 overflow-hidden rounded-3xl border border-navy/15 bg-ink text-white shadow-sm">
-			<div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-				<div className="relative aspect-16/10 min-h-64 overflow-hidden bg-navy/40 lg:aspect-auto lg:min-h-full">
+		<section className="mt-8 overflow-hidden rounded-3xl border border-navy/15 bg-ink text-white shadow-sm lg:max-h-[500px]">
+			<div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] lg:max-h-[500px]">
+				<div className="relative h-64 sm:h-80 lg:h-full min-h-64 sm:min-h-72 lg:min-h-0 w-full overflow-hidden bg-navy/20">
 					{photo ? (
-						<img
+						<ImageWithSkeleton
 							src={photo}
 							alt={`${project.title} installation`}
+							skeletonClassName="bg-white/10"
+							containerClassName="absolute inset-0 size-full"
 							className="size-full object-cover"
 						/>
 					) : (
@@ -240,14 +243,14 @@ function FeaturedCaseStudy() {
 							Project installation image
 						</div>
 					)}
-					<div className="absolute top-4 left-4 flex gap-2">
+					<div className="absolute top-4 left-4 z-10 flex gap-2">
 						<span className="rounded-lg bg-amber px-2.5 py-1 text-[11px] font-semibold text-ink uppercase">
 							Latest Case Study
 						</span>
 					</div>
 				</div>
 
-				<div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+				<div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10 min-h-0">
 					<div>
 						<div className="flex items-center gap-2">
 							<span className="text-xs font-medium text-amber">Featured</span>
@@ -280,8 +283,8 @@ function FeaturedCaseStudy() {
 								<span className="text-[10px] font-semibold tracking-wider text-white/40 uppercase">
 									Application
 								</span>
-								<p className="mt-0.5 text-xs font-medium capitalize text-white sm:text-sm">
-									{project.category} Solar
+								<p className="mt-0.5 text-xs font-medium text-white sm:text-sm">
+									{project.category === "home" ? "Home" : project.category === "business" ? "Business" : project.category} Solar
 								</p>
 							</div>
 						</div>

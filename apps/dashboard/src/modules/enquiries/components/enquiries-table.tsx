@@ -686,7 +686,7 @@ export function EnquiriesTableSkeleton() {
         <TableHeader className="bg-muted/40">
           <TableRow>
             {["", "Type", "Name", "Contact", "Summary", "Received", ""].map(
-              (header, idx) => (
+              (_, idx) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: Static skeleton
                 <TableHead key={idx} className="py-3">
                   <Skeleton className="h-4 w-16 bg-navy/10" />

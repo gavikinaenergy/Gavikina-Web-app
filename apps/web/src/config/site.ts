@@ -9,9 +9,12 @@ export const siteConfig = {
 	themeColor: "#101328",
 	defaultOgImage: "/og-image.webp",
 	social: {
-		twitter: "@gavikinaenergy",
-		twitterUrl: "https://twitter.com/gavikinaenergy",
-		linkedinUrl: "https://www.linkedin.com/company/gavikina-energy",
+		twitter: "@GavikinaEnergy",
+		twitterUrl: "https://x.com/GavikinaEnergy",
+		instagramUrl: "https://www.instagram.com/gavikina?obrf=MW15NTN5bmk0dzh4Zw==",
+		facebookUrl: "https://www.facebook.com/share/1FUANG8Qbe/",
+		linkedinUrl:
+			"https://www.linkedin.com/in/gavikina-energy-436608444?utm_source=share_via&utm_content=profile&utm_medium=member_android",
 	},
 	contact: {
 		phone: "+234 913 222 2384",

@@ -1,4 +1,4 @@
-// import { Badge } from "@workspace/ui/components/badge";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { PROJECT_PHOTOS } from "#/lib/content";
 import { openProject } from "#/store/modal";
@@ -25,9 +25,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
 	const categoryLabel =
 		project.category === "home"
-			? "Home"
+			? "Homes"
 			: project.category === "business"
-				? "Business"
+				? "Businesses"
 				: null;
 
 	return (
@@ -38,9 +38,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 			className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-navy/10 bg-white text-left shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-md"
 		>
 			<div className="relative aspect-4/3 w-full overflow-hidden bg-cream">
-				<img
+				<ImageWithSkeleton
 					src={imageSrc}
 					alt={`${project.title} installation`}
+					skeletonClassName="bg-navy/10"
 					className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
 				/>
 

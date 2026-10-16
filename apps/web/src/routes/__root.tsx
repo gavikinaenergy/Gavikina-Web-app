@@ -16,7 +16,7 @@ import TanstackQueryProvider from "#/integrations/tanstack-query/root-provider";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
-import WelcomePopup from "../components/WelcomePopup";
+import WhatsAppButton from "../components/WhatsAppButton";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import fontScaleCss from "../styles/font-scale.css?url";
 import marqueeCss from "../styles/marquee.css?url";
@@ -131,7 +131,7 @@ export function RootLayout() {
 				<Footer />
 				<Toaster />
 				<Modal />
-				<WelcomePopup />
+				<WhatsAppButton />
 			</div>
 		</TanstackQueryProvider>
 	);

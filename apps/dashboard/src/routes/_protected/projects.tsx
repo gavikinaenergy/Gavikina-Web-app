@@ -16,6 +16,7 @@ import {
 	DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu";
 import { Input } from "@workspace/ui/components/input";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { toast } from "@workspace/ui/components/toast";
 import { cn } from "@workspace/ui/lib/utils";
@@ -67,6 +68,11 @@ const CATEGORY_FILTERS: [FilterCategory, string][] = [
 	["business", "Businesses"],
 ];
 
+const CATEGORY_LABELS: Record<string, string> = {
+	home: "Homes",
+	business: "Businesses",
+};
+
 export const Route = createFileRoute("/_protected/projects")({
 	staticData: {
 		title: "Past Projects",
@@ -88,7 +94,7 @@ export const Route = createFileRoute("/_protected/projects")({
 function ProjectsRoute() {
 	const searchParams = Route.useSearch();
 	const navigate = useNavigate({ from: "/projects" });
-	const { layout, category, search, page } = searchParams;
+	const { layout, category, search } = searchParams;
 
 	const [searchInput, setSearchInput] = useState(search || "");
 
@@ -435,9 +441,10 @@ function ProjectGridCard({ project }: { project: ProjectWithPhotos }) {
 			{/* Top Image Banner */}
 			<div className="relative aspect-16/10 w-full overflow-hidden bg-cream">
 				{coverPhoto ? (
-					<img
+					<ImageWithSkeleton
 						src={coverPhoto}
 						alt={project.title}
+						skeletonClassName="bg-navy/10"
 						className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
 					/>
 				) : (
@@ -451,9 +458,9 @@ function ProjectGridCard({ project }: { project: ProjectWithPhotos }) {
 				<div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
 					<Badge
 						variant="secondary"
-						className="border border-navy/10 bg-white/90 text-navy/80 font-medium text-[10px] backdrop-blur-xs capitalize shadow-2xs"
+						className="border border-navy/10 bg-white/90 text-navy/80 font-medium text-[10px] backdrop-blur-xs shadow-2xs"
 					>
-						{project.category}
+						{CATEGORY_LABELS[project.category] || project.category}
 					</Badge>
 					{project.isCaseStudy && (
 						<Badge className="border border-amber-500/15 bg-amber-50/95 text-amber-900 font-medium text-[10px] gap-1 shadow-2xs">
@@ -577,9 +584,10 @@ function ProjectListRow({ project }: { project: ProjectWithPhotos }) {
 				<div className="flex min-w-0 flex-1 items-center gap-3.5 overflow-hidden">
 					<div className="relative size-12 shrink-0 overflow-hidden rounded-xl border border-navy/10 bg-navy/5">
 						{coverPhoto ? (
-							<img
+							<ImageWithSkeleton
 								src={coverPhoto}
 								alt={project.title}
+								skeletonClassName="bg-navy/10"
 								className="size-full object-cover"
 							/>
 						) : (
@@ -622,8 +630,8 @@ function ProjectListRow({ project }: { project: ProjectWithPhotos }) {
 				{/* Right side controls */}
 				<div className="flex shrink-0 items-center justify-between gap-4 border-t border-navy/5 pt-2 sm:border-t-0 sm:pt-0">
 					<div className="flex items-center gap-2">
-						<span className="rounded-md border border-navy/10 bg-navy/5 px-2 py-0.5 text-[11px] font-medium text-navy/70 capitalize">
-							{project.category}
+						<span className="rounded-md border border-navy/10 bg-navy/5 px-2 py-0.5 text-[11px] font-medium text-navy/70">
+							{CATEGORY_LABELS[project.category] || project.category}
 						</span>
 						<span className="text-xs font-semibold text-green">
 							{project.systemSize}

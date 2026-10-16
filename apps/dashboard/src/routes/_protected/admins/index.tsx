@@ -570,7 +570,7 @@ export function AdminsTableSkeleton() {
         <Table>
           <TableHeader className="bg-muted/40">
             <TableRow>
-              {["Admin", "Role", "Created Date", ""].map((header, idx) => (
+              {["Admin", "Role", "Created Date", ""].map((_, idx) => (
                 <TableHead key={idx} className="py-3">
                   <Skeleton className="h-4 w-20 bg-navy/10" />
                 </TableHead>

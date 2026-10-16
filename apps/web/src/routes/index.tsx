@@ -470,7 +470,7 @@ function HomeTiers() {
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {tiers.splice(0, 6).map((t, i) => (
+      {tiers.slice(0, 6).map((t, i) => (
         <Reveal key={t.id} delay={i * 50}>
           <Card
             key={t.id}

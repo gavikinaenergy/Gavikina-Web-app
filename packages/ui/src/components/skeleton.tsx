@@ -1,13 +1,26 @@
-import { cn } from "@workspace/ui/lib/utils"
+import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentProps, ElementType } from "react";
 
-function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="skeleton"
-      className={cn("animate-pulse rounded-md bg-muted", className)}
-      {...props}
-    />
-  )
+export interface SkeletonProps extends ComponentProps<"div"> {
+	as?: ElementType;
 }
 
-export { Skeleton }
+function Skeleton({
+	as: Component = "div",
+	className,
+	...props
+}: SkeletonProps) {
+	return (
+		<Component
+			data-slot="skeleton"
+			className={cn(
+				"animate-pulse rounded-md bg-muted",
+				Component === "span" && "inline-block",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+export { Skeleton };

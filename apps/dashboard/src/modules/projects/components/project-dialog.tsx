@@ -19,6 +19,7 @@ import {
 	FormSelect,
 	FormTextarea,
 } from "@workspace/ui/components/form-fields";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { toast } from "@workspace/ui/components/toast";
 import { cn } from "@workspace/ui/lib/utils";
@@ -63,12 +64,18 @@ export function ProjectDialog({ projectId, ...props }: ProjectDialogProps) {
 	});
 
 	const { data: tiers = [] } = useQuery(catalogueTiersQueryOptions());
-	const sizeOptions = useMemo(
-		() => tiers.map((t) => ({ label: t.name, value: t.name })),
-		[tiers],
-	);
+	const sizeOptions = useMemo(() => {
+		const opts = tiers.map((t) => ({ label: t.name, value: t.name }));
+		if (!opts.some((o) => o.value.toLowerCase() === "custom")) {
+			opts.push({ label: "Custom", value: "Custom" });
+		}
+		if (project?.size && !opts.some((o) => o.value === project.size)) {
+			opts.unshift({ label: project.size, value: project.size });
+		}
+		return opts;
+	}, [tiers, project?.size]);
 
-	const defaultSize = sizeOptions[0]?.value || "";
+	const defaultSize = sizeOptions[0]?.value || "Custom";
 
 	const form = useForm<ProjectDraftValues>({
 		resolver: zodResolver(projectDraftSchema),
@@ -248,8 +255,8 @@ export function ProjectDialog({ projectId, ...props }: ProjectDialogProps) {
 									name="category"
 									label="Category"
 									options={[
-										{ label: "Home", value: "home" },
-										{ label: "Business", value: "business" },
+										{ label: "Homes", value: "home" },
+										{ label: "Businesses", value: "business" },
 									]}
 									placeholder="Select category"
 									disabled={isPending}
@@ -285,9 +292,10 @@ export function ProjectDialog({ projectId, ...props }: ProjectDialogProps) {
 													key={idx}
 													className="group relative aspect-square overflow-hidden rounded-xl border border-navy/10 bg-navy/5"
 												>
-													<img
+													<ImageWithSkeleton
 														src={url}
 														alt={`Upload preview ${idx + 1}`}
+														skeletonClassName="bg-navy/10"
 														className="size-full object-cover"
 														onLoad={() => {
 															if (isFile) URL.revokeObjectURL(url);

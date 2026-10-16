@@ -47,7 +47,7 @@ function About() {
 
 			<div className="mt-10 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
 				{/* Content & Principles */}
-				<div className="flex flex-col gap-6 text-sm leading-loose text-navy/70 sm:text-[15.5px] font-light">
+				<div className="flex flex-col gap-6 sm:text-[18px] leading-loose text-navy/70">
 					<p>
 						Gavikina Energy is the brand name for Gavikina Nigeria Limited. We
 						serve homes, businesses and multi-site operations across Nigeria

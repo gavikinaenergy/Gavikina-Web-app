@@ -9,6 +9,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@workspace/ui/components/dialog";
+import { ImageWithSkeleton } from "@workspace/ui/components/image-with-skeleton";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { ArrowRight, MapPin, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -73,18 +74,17 @@ export default function ProjectDetailModal({
 
 				<DialogTitle className="mt-2 text-xl font-semibold tracking-tight text-navy sm:text-2xl">
 					{isLoading ? (
-						<Skeleton className="h-7 w-56" />
+						<Skeleton as="span" className="inline-block h-7 w-56" />
 					) : (
 						project?.title || "Project Details"
 					)}
 				</DialogTitle>
 
-				<DialogDescription className="mt-1 text-xs text-navy/55 sm:text-sm hidden">
-					{isLoading ? (
-						<Skeleton className="h-4 w-40" />
-					) : (
-						"Installed and sized to the project's actual requirements."
-					)}
+				<DialogDescription
+					render={<div />}
+					className="mt-1 text-xs text-navy/55 sm:text-sm hidden"
+				>
+					Installed and sized to the project's actual requirements.
 				</DialogDescription>
 			</DialogHeader>
 
@@ -98,14 +98,15 @@ export default function ProjectDetailModal({
 						{activePhoto && (
 							<section className="space-y-3">
 								<div className="relative aspect-16/10 overflow-hidden rounded-2xl border border-navy/10 bg-navy/5">
-									<img
+									<ImageWithSkeleton
 										src={activePhoto}
 										alt={`${project?.title ?? "Project"} installation`}
+										skeletonClassName="bg-navy/10"
 										className="size-full object-cover"
 									/>
 
 									{photos.length > 1 && (
-										<div className="absolute bottom-3 right-3 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+										<div className="absolute bottom-3 right-3 z-10 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
 											{activePhotoIdx + 1} / {photos.length}
 										</div>
 									)}
@@ -132,9 +133,10 @@ export default function ProjectDetailModal({
 															: "border-navy/10 opacity-65 hover:opacity-100",
 													].join(" ")}
 												>
-													<img
+													<ImageWithSkeleton
 														src={url}
 														alt=""
+														skeletonClassName="bg-navy/10"
 														className="size-full object-cover"
 													/>
 												</button>

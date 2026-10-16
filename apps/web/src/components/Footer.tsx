@@ -1,8 +1,36 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@workspace/ui/components/button";
+import facebookIcon from "../assets/facebook.svg";
+import instagramIcon from "../assets/instagram.svg";
+import linkedinIcon from "../assets/linkedin.svg";
 import logo from "../assets/logo-primary-ondark.svg";
+import xIcon from "../assets/twitter-x.svg";
 import { FOOTER_COLS } from "../lib/content";
 import { openAssess } from "../store/modal";
+import { siteConfig } from "#/config/site";
+
+const SOCIAL_LINKS = [
+	{
+		label: "X",
+		href: siteConfig.social.twitterUrl,
+		icon: xIcon,
+	},
+	{
+		label: "Instagram",
+		href: siteConfig.social.instagramUrl,
+		icon: instagramIcon,
+	},
+	{
+		label: "Facebook",
+		href: siteConfig.social.facebookUrl,
+		icon: facebookIcon,
+	},
+	{
+		label: "LinkedIn",
+		href: siteConfig.social.linkedinUrl,
+		icon: linkedinIcon,
+	},
+];
 
 export default function Footer() {
 	return (
@@ -29,6 +57,27 @@ export default function Footer() {
 						>
 							Become an agent →
 						</Link>
+
+						<div className="mt-6 flex items-center gap-2.5">
+							{SOCIAL_LINKS.map((item) => (
+								<a
+									key={item.label}
+									href={item.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={`Follow Gavikina Energy on ${item.label}`}
+									title={item.label}
+									className="group flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-200 hover:border-white/25 hover:bg-white/10 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green"
+								>
+									<img
+										src={item.icon}
+										alt=""
+										aria-hidden="true"
+										className="size-4 object-contain brightness-0 invert opacity-75 transition-opacity group-hover:opacity-100"
+									/>
+								</a>
+							))}
+						</div>
 					</div>
 
 					{/* Navigation Columns */}

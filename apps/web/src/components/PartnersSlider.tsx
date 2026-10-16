@@ -4,6 +4,7 @@ const PARTNERS = [
 	{ name: "Growatt", src: "/partners/growatt.jpg" },
 	{ name: "SRNE", src: "/partners/srne.jpg" },
 	{ name: "Fintrotech", src: "/partners/fintrotech.jpg" },
+	{ name: "Longi", src: "/partners/longi.jpeg" },
 ];
 
 // Repeated so one half of the track is wider than any viewport; the track
