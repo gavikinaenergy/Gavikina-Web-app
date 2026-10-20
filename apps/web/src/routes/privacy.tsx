@@ -1,18 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/privacy")({
 	head: () =>
 		createSeoMeta({
-			title: "Privacy Policy | Gavikina Energy",
-			description:
-				"Read the Gavikina Energy privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.",
+			title: `Privacy Policy | ${siteConfig.name}`,
+			description: `Read the ${siteConfig.name} privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.`,
 			path: "/privacy",
 			jsonLd: createWebPageSchema({
-				title: "Privacy Policy | Gavikina Energy",
-				description:
-					"Read the Gavikina Energy privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.",
+				title: `Privacy Policy | ${siteConfig.name}`,
+				description: `Read the ${siteConfig.name} privacy policy. Understand how we collect, use, and protect your personal information in compliance with Nigerian data laws.`,
 				path: "/privacy",
 			}),
 		}),
@@ -22,7 +21,7 @@ export const Route = createFileRoute("/privacy")({
 const SECTIONS = [
 	{
 		heading: "1. Who we are",
-		body: `Gavikina Energy is the trading brand of Gavikina Nigeria Limited ("Gavikina", "we", "us", "our"), a company incorporated in Nigeria. This Privacy Policy explains how we collect, use, share and protect personal information when you visit gavikinaenergy.com, request an energy assessment, order from our catalogue, or otherwise interact with us.`,
+		body: `${siteConfig.name} is the trading brand of ${siteConfig.legalName} ("${siteConfig.shortName}", "we", "us", "our"), a company incorporated in Nigeria. This Privacy Policy explains how we collect, use, share and protect personal information when you visit ${siteConfig.domain}, request an energy assessment, order from our catalogue, or otherwise interact with us.`,
 	},
 	{
 		heading: "2. Information we collect",
@@ -94,13 +93,25 @@ function Privacy() {
 						12. Contact us
 					</h2>
 					<p className="mt-2 text-sm leading-loose text-navy/70 sm:text-[15.5px]">
-						Gavikina Nigeria Limited (trading as Gavikina Energy)
+						{siteConfig.legalName} (trading as {siteConfig.name})
 						<br />
-						121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254, Nigeria
+						{siteConfig.contact.address.formatted}
 						<br />
-						Email: info@gavikinaenergy.com
+						Email:{" "}
+						<a
+							href={siteConfig.contact.links.email}
+							className="underline hover:text-navy"
+						>
+							{siteConfig.contact.email}
+						</a>
 						<br />
-						Phone: +234 913 222 2384
+						Phone:{" "}
+						<a
+							href={siteConfig.contact.links.tel}
+							className="underline hover:text-navy"
+						>
+							{siteConfig.contact.phone}
+						</a>
 					</p>
 				</div>
 			</div>

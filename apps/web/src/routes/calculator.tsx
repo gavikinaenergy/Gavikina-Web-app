@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteConfig } from "../config/site";
 import { createSoftwareApplicationSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 import SolarCalculator from "../modules/calculator/components/SolarCalculator";
@@ -7,7 +8,7 @@ import { openAssess } from "../store/modal";
 export const Route = createFileRoute("/calculator")({
 	head: () =>
 		createSeoMeta({
-			title: "Solar Load Calculator | Gavikina Energy",
+			title: `Solar Load Calculator | ${siteConfig.name}`,
 			description:
 				"Calculate the solar system size your home or office requires. Select your appliances to estimate daily load and find the right capacity tier.",
 			path: "/calculator",

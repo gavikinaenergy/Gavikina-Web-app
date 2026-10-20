@@ -1,7 +1,9 @@
+import { siteConfig } from "../config/site";
+
 const PHOTOS = [
 	{
 		src: "/installations/engineer-on-site.jpg",
-		alt: "Gavikina Energy engineer in a hard hat and hi-vis vest on a customer site",
+		alt: `${siteConfig.name} engineer in a hard hat and hi-vis vest on a customer site`,
 	},
 	{
 		src: "/installations/roof-array-1.jpg",
@@ -9,7 +11,7 @@ const PHOTOS = [
 	},
 	{
 		src: "/installations/crew-arriving.jpg",
-		alt: "Gavikina Energy crew in hi-vis vests arriving at a site",
+		alt: `${siteConfig.name} crew in hi-vis vests arriving at a site`,
 	},
 	{
 		src: "/installations/inverter-battery.jpg",
@@ -21,7 +23,7 @@ const PHOTOS = [
 	},
 	{
 		src: "/installations/commissioned-storage.jpg",
-		alt: "Gavikina Energy engineer beside two commissioned energy storage units",
+		alt: `${siteConfig.name} engineer beside two commissioned energy storage units`,
 	},
 	{
 		src: "/installations/roof-array-2.jpg",
@@ -29,7 +31,7 @@ const PHOTOS = [
 	},
 	{
 		src: "/installations/distribution-board.jpg",
-		alt: "Gavikina Energy engineer working on a distribution board",
+		alt: `${siteConfig.name} engineer working on a distribution board`,
 	},
 ];
 const LOOP = [...PHOTOS, ...PHOTOS];

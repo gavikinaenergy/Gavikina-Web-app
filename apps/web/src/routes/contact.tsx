@@ -10,15 +10,15 @@ import { Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitContact } from "#/modules/enquiries/api";
+import { siteConfig } from "../config/site";
 import { createContactPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/contact")({
 	head: () =>
 		createSeoMeta({
-			title: "Contact Our Solar Team | Gavikina Energy",
-			description:
-				"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Surulere, Lagos, to discuss your power requirements.",
+			title: `Contact Our Solar Team | ${siteConfig.name}`,
+			description: `Contact ${siteConfig.name} by phone, WhatsApp, or email. Speak with our engineering team in ${siteConfig.contact.address.addressLocality}, ${siteConfig.contact.address.addressRegion}, to discuss your power requirements.`,
 			path: "/contact",
 			jsonLd: createContactPageSchema(),
 		}),
@@ -29,26 +29,30 @@ const CONTACT_METHODS = [
 	{
 		icon: Phone,
 		label: "Phone",
-		value: "+234 913 222 2384",
-		note: "Mon–Sat, 8am to 6pm",
+		value: siteConfig.contact.phone,
+		href: siteConfig.contact.links.tel,
+		note: siteConfig.contact.notes.phone,
 	},
 	{
 		icon: MessageCircle,
 		label: "WhatsApp",
-		value: "+234 913 222 2384",
-		note: "Fastest for photos of your board or roof",
+		value: siteConfig.contact.whatsapp,
+		href: siteConfig.contact.links.whatsapp,
+		note: siteConfig.contact.notes.whatsapp,
 	},
 	{
 		icon: Mail,
 		label: "Email",
-		value: "info@gavikinaenergy.com",
-		note: "Replied the same working day",
+		value: siteConfig.contact.email,
+		href: siteConfig.contact.links.email,
+		note: siteConfig.contact.notes.email,
 	},
 	{
 		icon: MapPin,
 		label: "Office",
-		value: "121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254",
-		note: "Visits by appointment",
+		value: siteConfig.contact.address.formattedShort,
+		href: siteConfig.contact.links.maps,
+		note: siteConfig.contact.notes.office,
 	},
 ];
 
@@ -107,9 +111,18 @@ function Contact() {
 										<span className="text-xs font-semibold uppercase tracking-wider text-navy/50">
 											{c.label}
 										</span>
-										<div className="mt-1 text-base font-semibold tracking-tight text-navy">
+										<a
+											href={c.href}
+											target={c.href.startsWith("http") ? "_blank" : undefined}
+											rel={
+												c.href.startsWith("http")
+													? "noopener noreferrer"
+													: undefined
+											}
+											className="mt-1 block text-base font-semibold tracking-tight text-navy transition-colors hover:text-green"
+										>
 											{c.value}
-										</div>
+										</a>
 										<div className="mt-0.5 text-xs text-navy/60 sm:text-sm">
 											{c.note}
 										</div>
@@ -121,18 +134,18 @@ function Contact() {
 
 					<div className="overflow-hidden rounded-2xl border border-navy/10 bg-cream">
 						<iframe
-							title="Map of 121 Lawanson Rd, Surulere, Lagos"
-							src="https://www.openstreetmap.org/export/embed.html?bbox=3.3378%2C6.5068%2C3.3528%2C6.5168&layer=mapnik&marker=6.5118%2C3.3453"
+							title={`Map of ${siteConfig.contact.address.streetAddress}, ${siteConfig.contact.address.addressLocality}, ${siteConfig.contact.address.addressRegion}`}
+							src={siteConfig.contact.address.mapEmbedUrl}
 							loading="lazy"
 							className="block h-64 w-full border-0"
 						/>
 						<div className="flex flex-wrap items-center justify-between gap-4 bg-white p-5">
 							<div>
 								<div className="text-sm font-semibold tracking-tight text-navy">
-									121 Lawanson Rd, beside Adidde Supermarket
+									{siteConfig.contact.address.streetAddress}
 								</div>
 								<div className="mt-0.5 text-xs text-navy/60">
-									Surulere, Lagos 100254
+									{siteConfig.contact.address.addressLocality}, {siteConfig.contact.address.addressRegion} {siteConfig.contact.address.postalCode}
 								</div>
 							</div>
 							<Button
@@ -141,7 +154,7 @@ function Contact() {
 								nativeButton={false}
 								render={
 									<a
-										href="https://www.google.com/maps/search/?api=1&query=121+Lawanson+Rd%2C+Surulere%2C+Lagos+100254"
+										href={siteConfig.contact.address.mapUrl}
 										target="_blank"
 										rel="noopener noreferrer"
 									/>

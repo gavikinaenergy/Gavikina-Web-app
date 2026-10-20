@@ -14,6 +14,7 @@ import { cn } from "@workspace/ui/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo-primary.svg";
+import { siteConfig } from "../config/site";
 import { NAV } from "../lib/content";
 import { openAssess, openCalc } from "../store/modal";
 
@@ -57,7 +58,7 @@ export default function Header() {
 						<Link to="/" className="flex shrink-0 items-center">
 							<img
 								src={logo}
-								alt="Gavikina Energy"
+								alt={siteConfig.name}
 								className="block h-8 w-auto"
 							/>
 						</Link>

@@ -39,17 +39,21 @@ export function createRootSchema() {
 					streetAddress: siteConfig.contact.address.streetAddress,
 					addressLocality: siteConfig.contact.address.addressLocality,
 					addressRegion: siteConfig.contact.address.addressRegion,
+					postalCode: siteConfig.contact.address.postalCode,
 					addressCountry: siteConfig.contact.address.addressCountry,
 				},
 				contactPoint: {
 					"@type": "ContactPoint",
 					telephone: siteConfig.contact.phoneIntl,
+					email: siteConfig.contact.email,
 					contactType: "customer service",
 					areaServed: "NG",
 					availableLanguage: ["en"],
 				},
 				sameAs: [
 					siteConfig.social.twitterUrl,
+					siteConfig.social.instagramUrl,
+					siteConfig.social.facebookUrl,
 					siteConfig.social.linkedinUrl,
 				],
 			},
@@ -161,7 +165,7 @@ export function createProductCatalogueSchema(
 	return {
 		"@context": "https://schema.org",
 		"@type": "CollectionPage",
-		name: "Complete Solar System Tiers | Gavikina Energy",
+		name: `Complete Solar System Tiers | ${siteConfig.name}`,
 		description:
 			"Standardised solar system tiers from 1.5kVA to 10kVA with hybrid inverters, monocrystalline panels, and lithium battery storage.",
 		url: absoluteUrl("/catalogue"),
@@ -200,7 +204,7 @@ export function createProjectsCollectionSchema() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "CollectionPage",
-		name: "Solar Installation Projects | Gavikina Energy",
+		name: `Solar Installation Projects | ${siteConfig.name}`,
 		description:
 			"Gallery of completed solar installations across Nigeria with verified capacities and engineering specifications.",
 		url: absoluteUrl("/projects"),
@@ -237,9 +241,9 @@ export function createAboutPageSchema() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "AboutPage",
-		name: "About Our Solar Company | Gavikina Energy",
+		name: `About Our Solar Company | ${siteConfig.name}`,
 		description:
-			"Gavikina Nigeria Limited engineers complete solar and lithium battery installations. We size systems accurately so clients own their energy assets.",
+			`${siteConfig.legalName} engineers complete solar and lithium battery installations. We size systems accurately so clients own their energy assets.`,
 		url: absoluteUrl("/about"),
 		mainEntity: {
 			"@id": `${siteConfig.url}/#organization`,
@@ -254,9 +258,9 @@ export function createContactPageSchema() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "ContactPage",
-		name: "Contact Our Solar Team | Gavikina Energy",
+		name: `Contact Our Solar Team | ${siteConfig.name}`,
 		description:
-			"Contact Gavikina Energy by phone, WhatsApp, or email. Speak with our engineering team in Surulere, Lagos, to discuss your power requirements.",
+			`Contact ${siteConfig.name} by phone, WhatsApp, or email. Speak with our engineering team in ${siteConfig.contact.address.addressLocality}, ${siteConfig.contact.address.addressRegion}, to discuss your power requirements.`,
 		url: absoluteUrl("/contact"),
 		mainEntity: {
 			"@id": `${siteConfig.url}/#organization`,

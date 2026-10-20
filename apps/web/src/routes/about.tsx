@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ImageSlot from "../components/ImageSlot";
+import { siteConfig } from "../config/site";
 import { ABOUT_PHOTO } from "../lib/content";
 import { createAboutPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
@@ -7,9 +8,9 @@ import { createSeoMeta } from "../lib/seo";
 export const Route = createFileRoute("/about")({
 	head: () =>
 		createSeoMeta({
-			title: "About Our Solar Company | Gavikina Energy",
+			title: `About Our Solar Company | ${siteConfig.name}`,
 			description:
-				"Gavikina Nigeria Limited engineers complete solar and lithium battery installations. We size systems accurately so clients own their energy assets.",
+				`${siteConfig.legalName} engineers complete solar and lithium battery installations. We size systems accurately so clients own their energy assets.`,
 			path: "/about",
 			jsonLd: createAboutPageSchema(),
 		}),
@@ -49,7 +50,7 @@ function About() {
 				{/* Content & Principles */}
 				<div className="flex flex-col gap-6 sm:text-[18px] leading-loose text-navy/70">
 					<p>
-						Gavikina Energy is the brand name for Gavikina Nigeria Limited. We
+						{siteConfig.name} is the brand name for {siteConfig.legalName}. We
 						serve homes, businesses and multi-site operations across Nigeria
 						that are tired of budgeting for fuel. We are engineers first: every
 						system is sized from a measured load, not a sales target, and every

@@ -23,6 +23,7 @@ import {
 import { openProject } from "#/store/modal";
 import { AsyncBoundary } from "../components/async-boundary";
 
+import { siteConfig } from "../config/site";
 import { createProjectsCollectionSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
@@ -39,7 +40,7 @@ const ITEMS_PER_PAGE = 9;
 export const Route = createFileRoute("/projects")({
 	head: () =>
 		createSeoMeta({
-			title: "Solar Installation Projects | Gavikina Energy",
+			title: `Solar Installation Projects | ${siteConfig.name}`,
 			description:
 				"Explore completed residential and commercial solar installations across Lagos, Abuja, and Benin City. Verified system capacities and load details.",
 			path: "/projects",

@@ -1,10 +1,9 @@
+import { siteConfig } from "../config/site";
 import whatsappIcon from "../assets/whatsapp.svg";
 import { buildWhatsAppUrl } from "#/lib/whatsapp";
 
 export default function WhatsAppButton() {
-	const whatsappUrl = buildWhatsAppUrl(
-		"Hello Gavikina Energy, I would like to make an enquiry about your solar and energy solutions.",
-	);
+	const whatsappUrl = buildWhatsAppUrl(siteConfig.contact.defaultWhatsAppMessage);
 
 	return (
 		<a
@@ -12,8 +11,8 @@ export default function WhatsAppButton() {
 			href={whatsappUrl}
 			target="_blank"
 			rel="noopener noreferrer"
-			aria-label="Chat with Gavikina Energy on WhatsApp"
-			title="Chat with Gavikina Energy on WhatsApp"
+			aria-label={`Chat with ${siteConfig.name} on WhatsApp`}
+			title={`Chat with ${siteConfig.name} on WhatsApp`}
 			className="group fixed bottom-6 right-6 z-40 flex h-13 w-13 items-center overflow-hidden rounded-full bg-green text-white shadow-lg shadow-green/25 transition-all duration-300 ease-out hover:w-42 hover:bg-green hover:shadow-xl hover:shadow-green/35 hover:-translate-y-0.5 focus-visible:w-42 focus-visible:bg-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
 		>
 			<div className="flex size-13 shrink-0 items-center justify-center">

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@workspace/ui/components/button";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 import { openAssess } from "../store/modal";
@@ -7,12 +8,12 @@ import { openAssess } from "../store/modal";
 export const Route = createFileRoute("/how-it-works")({
 	head: () =>
 		createSeoMeta({
-			title: "How It Works | Gavikina Energy",
+			title: `How It Works | ${siteConfig.name}`,
 			description:
 				"Learn how our solar installation process works from load assessment and on-site engineering inspection to installation, commissioning, and support.",
 			path: "/how-it-works",
 			jsonLd: createWebPageSchema({
-				title: "How It Works | Gavikina Energy",
+				title: `How It Works | ${siteConfig.name}`,
 				description:
 					"Learn how our solar installation process works from load assessment and on-site engineering inspection to installation, commissioning, and support.",
 				path: "/how-it-works",

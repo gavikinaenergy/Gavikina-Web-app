@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteConfig } from "../config/site";
 import { createSoftwareApplicationSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 import AssessmentWizard from "#/modules/assessment/components/assessment-wizard";
@@ -6,7 +7,7 @@ import AssessmentWizard from "#/modules/assessment/components/assessment-wizard"
 export const Route = createFileRoute("/assessment")({
 	head: () =>
 		createSeoMeta({
-			title: "Free Energy Assessment | Gavikina Energy",
+			title: `Free Energy Assessment | ${siteConfig.name}`,
 			description:
 				"Complete a ten-minute energy assessment for your property. Review system recommendations and fuel cost comparisons before booking an inspection.",
 			path: "/assessment",

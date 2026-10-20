@@ -7,6 +7,7 @@ import { Skeleton } from "@workspace/ui/components/skeleton";
 import { Check } from "lucide-react";
 import { AsyncBoundary } from "@/components/async-boundary";
 import { catalogueTiersQueryOptions } from "@/modules/catalogue/query-options";
+import { siteConfig } from "../config/site";
 import { createProductCatalogueSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 import { openAssess, openCalc } from "../store/modal";
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/catalogue")({
 	},
 	head: ({ loaderData }) =>
 		createSeoMeta({
-			title: "Solar System Tiers and Pricing | Gavikina Energy",
+			title: `Solar System Tiers and Pricing | ${siteConfig.name}`,
 			description:
 				"Compare solar system tiers from 1.5kVA to 10kVA. Each complete setup includes monocrystalline panels, a hybrid inverter, and LiFePO4 batteries.",
 			path: "/catalogue",

@@ -41,7 +41,7 @@ export default function Footer() {
 					<div>
 						<img
 							src={logo}
-							alt="Gavikina Energy"
+							alt={siteConfig.name}
 							className="block h-9 w-auto"
 						/>
 						<p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
@@ -65,7 +65,7 @@ export default function Footer() {
 									href={item.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label={`Follow Gavikina Energy on ${item.label}`}
+									aria-label={`Follow ${siteConfig.name} on ${item.label}`}
 									title={item.label}
 									className="group flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-200 hover:border-white/25 hover:bg-white/10 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green"
 								>
@@ -106,10 +106,10 @@ export default function Footer() {
 					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 						<div className="flex flex-col gap-1">
 							<span className="text-xs text-white/50">
-								© 2026 Gavikina Energy. Power Your Own.
+								© {new Date().getFullYear()} {siteConfig.name}. {siteConfig.tagline}
 							</span>
 							<span className="text-[11px] text-white/35">
-								Gavikina Energy is a brand of Gavikina Nigeria Limited.
+								{siteConfig.name} is a brand of {siteConfig.legalName}.
 							</span>
 						</div>
 						<div className="flex items-center gap-4">
@@ -128,8 +128,7 @@ export default function Footer() {
 						</div>
 					</div>
 					<span className="text-xs text-white/50">
-						Prices on this site are indicative ranges, confirmed after site
-						inspection.
+						{siteConfig.pricingDisclaimer}
 					</span>
 				</div>
 			</div>

@@ -2,6 +2,8 @@
 // Structured data that both apps need (sizing tiers, past-project records)
 // lives in @gavikina/engine instead.
 
+import { siteConfig } from "../config/site";
+
 export interface NavItem {
 	path: string;
 	label: string;
@@ -107,7 +109,7 @@ export interface Photo {
 
 export const HERO_PHOTO = {
 	src: "/hero/gavikina-engineers-install.jpg",
-	alt: "Two Gavikina Energy engineers in hard hats and hi-vis vests installing an inverter and battery system",
+	alt: `Two ${siteConfig.name} engineers in hard hats and hi-vis vests installing an inverter and battery system`,
 };
 
 // Keyed by the shared Project.id (from @gavikina/engine) — the admin
@@ -154,7 +156,7 @@ export const CASE_STUDY_PHOTO: Photo = {
 
 export const ABOUT_PHOTO = {
 	src: "/installations/distribution-board.jpg",
-	alt: "Gavikina Energy engineer in a branded hi-vis vest working on a distribution board",
+	alt: `${siteConfig.name} engineer in a branded hi-vis vest working on a distribution board`,
 };
 
 export const FAQS = [

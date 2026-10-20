@@ -10,18 +10,19 @@ import { Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitInvestorRequest } from "#/modules/enquiries/api";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/investors")({
 	head: () =>
 		createSeoMeta({
-			title: "Investor Information | Gavikina Energy",
+			title: `Investor Information | ${siteConfig.name}`,
 			description:
 				"Read our investment brief on solar energy infrastructure in Nigeria. Learn about our standardised installation model and request the investor pack.",
 			path: "/investors",
 			jsonLd: createWebPageSchema({
-				title: "Investor Information | Gavikina Energy",
+				title: `Investor Information | ${siteConfig.name}`,
 				description:
 					"Read our investment brief on solar energy infrastructure in Nigeria. Learn about our standardised installation model and request the investor pack.",
 				path: "/investors",
@@ -103,7 +104,7 @@ function Investors() {
 				{/* Left Column: Thesis & Stats */}
 				<div className="flex flex-col gap-8">
 					<p className="max-w-2xl text-base leading-loose text-navy/70">
-						Gavikina Energy sells complete solar systems to households and small
+						{siteConfig.name} sells complete solar systems to households and small
 						businesses that already spend heavily on generator fuel every month.
 						The customer is not being persuaded to change habits; they are being
 						offered a cheaper version of what they already buy.

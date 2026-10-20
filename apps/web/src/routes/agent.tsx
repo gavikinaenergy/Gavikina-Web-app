@@ -10,20 +10,21 @@ import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitAgentApplication } from "#/modules/enquiries/api";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/agent")({
 	head: () =>
 		createSeoMeta({
-			title: "Become a Solar Agent | Gavikina Energy",
+			title: `Become a Solar Agent | ${siteConfig.name}`,
 			description:
-				"Join the Gavikina Energy agent network. Introduce property owners in your area, attend site inspections with our engineers, and earn commissions.",
+				`Join the ${siteConfig.name} agent network. Introduce property owners in your area, attend site inspections with our engineers, and earn commissions.`,
 			path: "/agent",
 			jsonLd: createWebPageSchema({
-				title: "Become a Solar Agent | Gavikina Energy",
+				title: `Become a Solar Agent | ${siteConfig.name}`,
 				description:
-					"Join the Gavikina Energy agent network. Introduce property owners in your area, attend site inspections with our engineers, and earn commissions.",
+					`Join the ${siteConfig.name} agent network. Introduce property owners in your area, attend site inspections with our engineers, and earn commissions.`,
 				path: "/agent",
 			}),
 		}),

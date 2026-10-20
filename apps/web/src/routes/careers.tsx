@@ -12,20 +12,21 @@ import { useForm } from "react-hook-form";
 import { submitCareerApplication } from "#/modules/enquiries/api";
 import { FileUploadArea } from "@/modules/upload/components/file-upload-area";
 import { useFileUpload } from "@/modules/upload/hooks/use-file-upload";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/careers")({
 	head: () =>
 		createSeoMeta({
-			title: "Careers in Solar Energy | Gavikina Energy",
+			title: `Careers in Solar Energy | ${siteConfig.name}`,
 			description:
-				"Join Gavikina Energy as an electrical engineer, solar installer, or load assessor. Apply online to join our growing installation network in Nigeria.",
+				`Join ${siteConfig.name} as an electrical engineer, solar installer, or load assessor. Apply online to join our growing installation network in Nigeria.`,
 			path: "/careers",
 			jsonLd: createWebPageSchema({
-				title: "Careers in Solar Energy | Gavikina Energy",
+				title: `Careers in Solar Energy | ${siteConfig.name}`,
 				description:
-					"Join Gavikina Energy as an electrical engineer, solar installer, or load assessor. Apply online to join our growing installation network in Nigeria.",
+					`Join ${siteConfig.name} as an electrical engineer, solar installer, or load assessor. Apply online to join our growing installation network in Nigeria.`,
 				path: "/careers",
 			}),
 		}),

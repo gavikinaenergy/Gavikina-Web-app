@@ -5,6 +5,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@workspace/ui/components/accordion";
+import { siteConfig } from "../config/site";
 import { FAQS } from "../lib/content";
 import { createFaqSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
@@ -12,7 +13,7 @@ import { createSeoMeta } from "../lib/seo";
 export const Route = createFileRoute("/faq")({
 	head: () =>
 		createSeoMeta({
-			title: "Solar FAQs | Gavikina Energy",
+			title: `Solar FAQs | ${siteConfig.name}`,
 			description:
 				"Find clear answers to common questions about solar panel output, generator integration, lithium battery life, installation timelines, and pricing.",
 			path: "/faq",

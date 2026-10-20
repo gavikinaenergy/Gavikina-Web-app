@@ -1,18 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteConfig } from "../config/site";
 import { createWebPageSchema } from "../lib/schema";
 import { createSeoMeta } from "../lib/seo";
 
 export const Route = createFileRoute("/terms")({
 	head: () =>
 		createSeoMeta({
-			title: "Terms and Conditions | Gavikina Energy",
-			description:
-				"Review terms and conditions for Gavikina Energy services, including quotation acceptance, equipment ownership, warranties, and installation agreements.",
+			title: `Terms and Conditions | ${siteConfig.name}`,
+			description: `Review terms and conditions for ${siteConfig.name} services, including quotation acceptance, equipment ownership, warranties, and installation agreements.`,
 			path: "/terms",
 			jsonLd: createWebPageSchema({
-				title: "Terms and Conditions | Gavikina Energy",
-				description:
-					"Review terms and conditions for Gavikina Energy services, including quotation acceptance, equipment ownership, warranties, and installation agreements.",
+				title: `Terms and Conditions | ${siteConfig.name}`,
+				description: `Review terms and conditions for ${siteConfig.name} services, including quotation acceptance, equipment ownership, warranties, and installation agreements.`,
 				path: "/terms",
 			}),
 		}),
@@ -22,7 +21,7 @@ export const Route = createFileRoute("/terms")({
 const SECTIONS = [
 	{
 		heading: "1. About these terms",
-		body: `These Terms & Conditions ("Terms") govern your use of gavikinaenergy.com and the products and services offered by Gavikina Nigeria Limited, trading as Gavikina Energy ("Gavikina", "we", "us", "our"). By using our website, requesting an assessment, or placing an order, you agree to these Terms.`,
+		body: `These Terms & Conditions ("Terms") govern your use of ${siteConfig.domain} and the products and services offered by ${siteConfig.legalName}, trading as ${siteConfig.name} ("${siteConfig.shortName}", "we", "us", "our"). By using our website, requesting an assessment, or placing an order, you agree to these Terms.`,
 	},
 	{
 		heading: "2. Our services",
@@ -50,7 +49,7 @@ const SECTIONS = [
 	},
 	{
 		heading: "8. Intellectual property",
-		body: "All content on this website, including text, images and logos, belongs to Gavikina Nigeria Limited or its licensors and may not be copied or used without permission.",
+		body: `All content on this website, including text, images and logos, belongs to ${siteConfig.legalName} or its licensors and may not be copied or used without permission.`,
 	},
 	{
 		heading: "9. Governing law",
@@ -90,13 +89,25 @@ function Terms() {
 						11. Contact us
 					</h2>
 					<p className="mt-2 text-sm leading-loose text-navy/70 sm:text-[15.5px]">
-						Gavikina Nigeria Limited (trading as Gavikina Energy)
+						{siteConfig.legalName} (trading as {siteConfig.name})
 						<br />
-						121 Lawanson Rd, beside Adidde Supermarket, Surulere, Lagos 100254, Nigeria
+						{siteConfig.contact.address.formatted}
 						<br />
-						Email: info@gavikinaenergy.com
+						Email:{" "}
+						<a
+							href={siteConfig.contact.links.email}
+							className="underline hover:text-navy"
+						>
+							{siteConfig.contact.email}
+						</a>
 						<br />
-						Phone: +234 913 222 2384
+						Phone:{" "}
+						<a
+							href={siteConfig.contact.links.tel}
+							className="underline hover:text-navy"
+						>
+							{siteConfig.contact.phone}
+						</a>
 					</p>
 				</div>
 			</div>
