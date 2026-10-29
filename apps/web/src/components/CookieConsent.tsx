@@ -133,7 +133,7 @@ export default function CookieConsent() {
               </span>
               <button
                 type="button"
-                onClick={closeCookieBanner}
+                onClick={dismissCookieBanner}
                 aria-label="Close preferences"
                 className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white"
               >
