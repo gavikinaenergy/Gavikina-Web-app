@@ -114,23 +114,23 @@ export default function Footer() {
                 {siteConfig.name} is a brand of {siteConfig.legalName}.
               </span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <Link
                 to="/privacy"
-                className="text-xs text-white/50 transition-colors hover:text-white"
+                className="text-xs text-white/50 underline-offset-2 transition-colors hover:text-white hover:underline"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-xs text-white/50 transition-colors hover:text-white"
+                className="text-xs text-white/50 underline-offset-2 transition-colors hover:text-white hover:underline"
               >
                 Terms &amp; Conditions
               </Link>
               <button
                 type="button"
                 onClick={() => openCookiePreferences()}
-                className="cursor-pointer text-xs text-white/50 transition-colors hover:text-white"
+                className="cursor-pointer text-xs text-white/50 underline-offset-2 transition-colors hover:text-white hover:underline"
               >
                 Cookie Preferences
               </button>

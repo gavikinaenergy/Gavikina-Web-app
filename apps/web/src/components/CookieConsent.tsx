@@ -123,7 +123,7 @@ export default function CookieConsent() {
               <button
                 type="button"
                 onClick={() => setCookieConsentView("banner")}
-                className="flex items-center gap-1 text-xs font-semibold text-green transition-colors hover:text-green-dark"
+                className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-green transition-colors hover:text-green-dark"
               >
                 <ArrowLeft className="size-3.5" />
                 <span>Back</span>
@@ -131,6 +131,14 @@ export default function CookieConsent() {
               <span className="text-xs font-semibold text-navy dark:text-white">
                 Cookie Preferences
               </span>
+              <button
+                type="button"
+                onClick={closeCookieBanner}
+                aria-label="Close preferences"
+                className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <X className="size-4" />
+              </button>
             </div>
 
             <p className="text-xs leading-relaxed text-navy/70 dark:text-white/70">
