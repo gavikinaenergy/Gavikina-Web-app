@@ -159,7 +159,7 @@ export default function CookieConsent() {
                   aria-hidden="true"
                   className="flex size-5 shrink-0 items-center justify-center rounded-md bg-green text-white"
                 >
-                  <Check className="size-3 stroke-[3]" />
+                  <Check className="size-3 stroke-3" />
                 </div>
               </div>
 
