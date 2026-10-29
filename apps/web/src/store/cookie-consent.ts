@@ -205,6 +205,14 @@ export function closeCookieBanner(): void {
   }))
 }
 
+export function dismissCookieBanner(): void {
+  if (!cookieConsentStore.state.hasConsented) {
+    declineNonEssentialCookies()
+  } else {
+    closeCookieBanner()
+  }
+}
+
 export function setCookieConsentView(view: "banner" | "preferences"): void {
   cookieConsentStore.setState((s) => ({
     ...s,

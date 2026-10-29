@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router"
 import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
-import { ArrowLeft, Check, Cookie, SlidersHorizontal, X } from "lucide-react"
+import { ArrowLeft, Check, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import {
   acceptAllCookies,
-  closeCookieBanner,
-  declineNonEssentialCookies,
+  dismissCookieBanner,
   initCookieConsent,
   saveCookiePreferences,
   setCookieConsentView,
@@ -14,7 +13,7 @@ import {
 } from "../store/cookie-consent"
 
 export default function CookieConsent() {
-  const { isOpen, view, preferences, hasConsented } = useCookieConsentState()
+  const { isOpen, view, preferences } = useCookieConsentState()
 
   const [analyticsEnabled, setAnalyticsEnabled] = useState(
     preferences.analytics
@@ -54,7 +53,7 @@ export default function CookieConsent() {
         // Mobile layout: docked at bottom with safe padding
         "inset-x-0 bottom-0 p-4 sm:p-0",
         // Desktop layout: floating card at bottom-left (avoids WhatsApp button at bottom-right)
-        "sm:inset-x-auto sm:bottom-6 sm:left-6 sm:w-full sm:max-w-[430px]"
+        "sm:inset-x-auto sm:bottom-6 sm:left-6 sm:w-full sm:max-w-2xl"
       )}
     >
       <div
@@ -64,77 +63,59 @@ export default function CookieConsent() {
           "animate-in duration-300 slide-in-from-bottom-5 fade-in"
         )}
       >
-        {/* Optional close button if user previously consented and reopened from footer */}
-        {hasConsented && (
-          <button
-            type="button"
-            onClick={closeCookieBanner}
-            aria-label="Close cookie banner"
-            className="absolute top-3.5 right-3.5 flex size-7 items-center justify-center rounded-lg border border-navy/10 text-navy/60 transition-colors hover:bg-cream/40 hover:text-navy dark:border-white/10 dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
-          >
-            <X className="size-4" />
-          </button>
-        )}
+        {/* Clear close (X) button */}
+        <button
+          type="button"
+          onClick={dismissCookieBanner}
+          aria-label="Close cookie consent"
+          className="absolute top-3.5 right-3.5 flex size-7 items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white"
+        >
+          <X className="size-4" />
+        </button>
 
         {view === "banner" ? (
-          /* Banner Summary View */
-          <div className="flex flex-col gap-4">
-            <div className="flex items-start gap-3.5 pr-6">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-green/10 text-green">
-                <Cookie className="size-5" />
-              </div>
-              <div>
-                <h2 className="text-[15px] font-semibold tracking-tight text-navy dark:text-white">
-                  Cookie &amp; Privacy Choices
-                </h2>
-                <p className="mt-1 text-xs leading-relaxed text-navy/70 dark:text-white/70">
-                  We use cookies to deliver essential functionality and analyze
-                  site traffic to enhance our clean energy advisory tools. We
-                  comply with the Nigeria Data Protection Act (NDPA 2023).
-                </p>
+          /* Banner Summary View matching user example */
+          <div className="flex flex-col gap-4 pr-6 sm:flex-row sm:items-center sm:justify-between sm:pr-8">
+            <div className="flex-1 pr-2 sm:pr-4">
+              <h2 className="text-base font-bold tracking-tight text-navy dark:text-white">
+                Cookie Consent
+              </h2>
+              <p className="mt-1 text-xs leading-relaxed text-navy/70 dark:text-white/70">
+                By clicking &ldquo;Accept All Cookies&rdquo;, you agree to the
+                storing of cookies on your device to enhance site navigation,
+                analyze site usage, and assist in our marketing efforts.{" "}
                 <Link
                   to="/privacy"
-                  className="mt-1.5 inline-block text-[11px] font-medium text-green underline-offset-4 hover:underline"
+                  className="font-medium text-green underline underline-offset-4 hover:text-green-dark"
                 >
-                  Read our Privacy Policy →
+                  Privacy policy
                 </Link>
-              </div>
+              </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col gap-2 pt-1 sm:pt-2">
-              <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-                <Button
-                  size="sm"
-                  variant="primary"
-                  className="font-semibold"
-                  onClick={acceptAllCookies}
-                >
-                  Accept All
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="text-xs font-medium text-navy sm:text-sm dark:text-white"
-                  onClick={declineNonEssentialCookies}
-                >
-                  Decline Non-Essential
-                </Button>
-              </div>
-
-              <button
-                type="button"
+            {/* Two useful action buttons to avoid fatigue */}
+            <div className="flex shrink-0 items-center gap-2.5 pt-1 sm:pt-0">
+              <Button
+                size="sm"
+                variant="primary"
+                className="px-4 font-medium"
                 onClick={() => setCookieConsentView("preferences")}
-                className="mt-1 flex items-center justify-center gap-1.5 py-1 text-xs font-medium text-navy/60 transition-colors hover:text-navy dark:text-white/60 dark:hover:text-white"
               >
-                <SlidersHorizontal className="size-3.5" />
-                <span>Customize preferences</span>
-              </button>
+                Manage cookies
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="border-green px-4 font-medium text-green hover:bg-green/10 hover:text-green-dark dark:border-green-light dark:text-green-light"
+                onClick={acceptAllCookies}
+              >
+                Accept all
+              </Button>
             </div>
           </div>
         ) : (
           /* Detailed Preferences View */
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 pr-6 sm:pr-8">
             <div className="flex items-center justify-between border-b border-navy/10 pb-3 dark:border-white/10">
               <button
                 type="button"
@@ -145,14 +126,13 @@ export default function CookieConsent() {
                 <span>Back</span>
               </button>
               <span className="text-xs font-semibold text-navy dark:text-white">
-                Cookie Categories
+                Cookie Preferences
               </span>
             </div>
 
             <p className="text-xs leading-relaxed text-navy/70 dark:text-white/70">
-              Tailor your consent settings below. Strictly necessary cookies
-              cannot be deactivated as they are required for security and core
-              site navigation.
+              Choose which cookies you allow us to use. Essential cookies are
+              required for basic security and site functionality.
             </p>
 
             <div className="flex flex-col gap-3 py-1">
@@ -261,7 +241,7 @@ export default function CookieConsent() {
                 className="text-xs font-medium text-navy sm:text-sm dark:text-white"
                 onClick={acceptAllCookies}
               >
-                Accept All
+                Accept all
               </Button>
             </div>
           </div>
