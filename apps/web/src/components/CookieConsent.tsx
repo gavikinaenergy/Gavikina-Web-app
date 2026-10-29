@@ -13,6 +13,7 @@ import {
 } from "../store/cookie-consent"
 
 export default function CookieConsent() {
+  const [mounted, setMounted] = useState(false)
   const { isOpen, view, preferences } = useCookieConsentState()
 
   const [analyticsEnabled, setAnalyticsEnabled] = useState(
@@ -30,11 +31,12 @@ export default function CookieConsent() {
 
   // Initialize consent state on client mount
   useEffect(() => {
+    setMounted(true)
     const cleanup = initCookieConsent()
     return cleanup
   }, [])
 
-  if (!isOpen) return null
+  if (!mounted || !isOpen) return null
 
   const handleSaveCustom = () => {
     saveCookiePreferences({
@@ -68,7 +70,10 @@ export default function CookieConsent() {
           type="button"
           onClick={dismissCookieBanner}
           aria-label="Close cookie consent"
-          className={cn("absolute top-2.5 right-2.5 flex size-7 items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white", view === "preferences" && "hidden")}
+          className={cn(
+            "absolute top-2.5 right-2.5 flex size-7 items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white",
+            view === "preferences" && "hidden"
+          )}
         >
           <X className="size-4" />
         </button>
