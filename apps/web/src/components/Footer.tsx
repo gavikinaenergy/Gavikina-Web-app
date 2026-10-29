@@ -136,9 +136,20 @@ export default function Footer() {
               </button>
             </div>
           </div>
-          <span className="text-xs text-white/50">
-            {siteConfig.pricingDisclaimer}
-          </span>
+          <div className="flex flex-col gap-2 border-t border-white/5 pt-2 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+            <span>{siteConfig.pricingDisclaimer}</span>
+            <span>
+              Designed &amp; developed by{" "}
+              <a
+                href={siteConfig.agency.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/70 underline-offset-2 transition-colors hover:text-green hover:underline"
+              >
+                {siteConfig.agency.name}
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

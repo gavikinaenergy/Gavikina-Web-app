@@ -53,12 +53,12 @@ export default function CookieConsent() {
         // Mobile layout: docked at bottom with safe padding
         "inset-x-0 bottom-0 p-4 sm:p-0",
         // Desktop layout: floating card at bottom-left (avoids WhatsApp button at bottom-right)
-        "sm:inset-x-auto sm:bottom-6 sm:left-6 sm:w-full sm:max-w-2xl"
+        "sm:inset-x-auto sm:bottom-6 sm:left-6 sm:w-full sm:max-w-4xl"
       )}
     >
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border border-navy/10 bg-white/95 p-5 shadow-2xl backdrop-blur-md",
+          "relative overflow-hidden rounded-xl border border-navy/10 bg-white/95 p-5 shadow-2xl backdrop-blur-xl",
           "text-navy dark:border-white/10 dark:bg-ink/95 dark:text-white",
           "animate-in duration-300 slide-in-from-bottom-5 fade-in"
         )}
@@ -96,17 +96,15 @@ export default function CookieConsent() {
             {/* Two useful action buttons to avoid fatigue */}
             <div className="flex shrink-0 items-center gap-2.5 pt-1 sm:pt-0">
               <Button
-                size="sm"
                 variant="primary"
-                className="px-4 font-medium"
+                className="px-4"
                 onClick={() => setCookieConsentView("preferences")}
               >
                 Manage cookies
               </Button>
               <Button
-                size="sm"
                 variant="outline"
-                className="border-green px-4 font-medium text-green hover:bg-green/10 hover:text-green-dark dark:border-green-light dark:text-green-light"
+                className="border-green px-4 text-green hover:bg-green/10 hover:text-green-dark dark:border-green-light dark:text-green-light"
                 onClick={acceptAllCookies}
               >
                 Accept all
