@@ -136,7 +136,7 @@ export default function Footer() {
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-2 border-t border-white/5 pt-2 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 border-t border-white/1 pt-2 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
             <span>{siteConfig.pricingDisclaimer}</span>
             <span>
               Designed &amp; developed by{" "}

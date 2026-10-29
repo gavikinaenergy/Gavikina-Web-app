@@ -68,14 +68,14 @@ export default function CookieConsent() {
           type="button"
           onClick={dismissCookieBanner}
           aria-label="Close cookie consent"
-          className="absolute top-3.5 right-3.5 flex size-7 items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white"
+          className={cn("absolute top-2.5 right-2.5 flex size-7 items-center justify-center rounded-lg text-navy/40 transition-colors hover:bg-navy/5 hover:text-navy dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white", view === "preferences" && "hidden")}
         >
           <X className="size-4" />
         </button>
 
         {view === "banner" ? (
           /* Banner Summary View matching user example */
-          <div className="flex flex-col gap-4 pr-6 sm:flex-row sm:items-center sm:justify-between sm:pr-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex-1 pr-2 sm:pr-4">
               <h2 className="text-base font-bold tracking-tight text-navy dark:text-white">
                 Cookie Consent
@@ -113,7 +113,7 @@ export default function CookieConsent() {
           </div>
         ) : (
           /* Detailed Preferences View */
-          <div className="flex flex-col gap-4 pr-6 sm:pr-8">
+          <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between border-b border-navy/10 pb-3 dark:border-white/10">
               <button
                 type="button"
